@@ -2,6 +2,10 @@ import os
 import shutil
 from time import sleep
 
+# Automatic File Organizer #
+# Organizes the files in the given directory at start-up and when a new file is added. #
+# Made by Asux - 12/06/2022 #
+
 def organizefiles():
 	for file in checkdircontent(filedir):
 		try:
@@ -74,11 +78,15 @@ def organizefiles():
 		except FileNotFoundError:
 			pass
 
-
-
-# Automatic File Organizer #
-# Organizes the files in the Desktop folder at start-up and when a file is added, modified or removed #
-# Made by Asux - 12/06/2022 #
+		try:
+			if file.lower().endswith(fileextensionsF["doc"]):
+				if os.path.isdir(filedir + "\\DOCUMENT"):
+					shutil.move(os.path.join(filedir, file), os.path.join(filedir + "\\DOCUMENT", file))
+				else:
+					os.mkdir(filedir + "\\DOCUMENT")
+					shutil.move(os.path.join(filedir, file), os.path.join(filedir + "\\DOCUMENT", file))
+		except FileNotFoundError:
+			pass
 
 
 
@@ -88,14 +96,20 @@ fileextensionsF = {
 	         ".m4v",".avi",".wmv",".wmv",".mov",".qt",".flv",".swf"),
 	"image":(".png",".jpg",".jpeg",".webp",".bmp",".raw",".jpe",".jif",".jfif",
 	         ".jfi",".dib",".heif",".ind",".jpm",".jp2"),
-	"audio":(".m4a",".mp3",".wav",".flac",".wma",".aac",".3gp"),
-	"archive":(".zip",".rar",".tar",".7z",".iso",".gz")
+	"audio":(".aac", ".aa", ".dvf", ".m4a", ".m4b", ".m4p", ".mp3",
+              ".msv", "ogg", "oga", ".vox", ".wav", ".wma", ".flac"),
+	"archive":(".a", ".ar", ".cpio", ".iso", ".tar", ".gz", ".rz", ".7z",
+                 ".dmg", ".rar", ".xar", ".zip"),
+	"doc":(".oxps", ".epub", ".pages", ".docx", ".doc", ".fdf", ".ods",
+            ".odt", ".pwi", ".xsn", ".xps", ".dotx", ".docm", ".dox",
+            ".rvg", ".rtf", ".rtfd", ".wpd", ".xls", ".xlsx", ".ppt",
+            "pptx", ".pdf")
 }
 
 def checkdircontent(dirpath):
 	return os.listdir(dirpath)
 
-filedir = "YOUR PATH HERE"
+filedir = "YOUR_PATH_HERE"
 DC = list()
 
 while True:
