@@ -96,7 +96,7 @@ fileextensionsF = {
 	         ".m4v",".avi",".wmv",".wmv",".mov",".qt",".flv",".swf"),
 	"image":(".png",".jpg",".jpeg",".webp",".bmp",".raw",".jpe",".jif",".jfif",
 	         ".jfi",".dib",".heif",".ind",".jpm",".jp2"),
-	"audio":(".aac", ".aa", ".dvf", ".m4a", ".m4b", ".m4p", ".mp3",
+	"audio":(".aac", ".aa", ".dvf", ".m4a", ".m4b", ".mp3",
               ".msv", "ogg", "oga", ".vox", ".wav", ".wma", ".flac"),
 	"archive":(".a", ".ar", ".cpio", ".iso", ".tar", ".gz", ".rz", ".7z",
                  ".dmg", ".rar", ".xar", ".zip"),
