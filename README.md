@@ -9,5 +9,7 @@ It will use the existing folder and not create a new folder if it exists.
 **The script will overwrite any file with the same name and file extension in the folder, which can result in a permanent loss of the previous file.
 In the future, I will add a code to rename the file if a file with the same name and extension already exists, till then, be careful.**
 
+Instructions on setting it up: HOW_TO_USE.txt
+
 ###### Here's a short video of it doing its job:
 ![](https://i.imgur.com/pgUXr65.gif)
