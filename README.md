@@ -11,4 +11,4 @@ In the future, I will add a code to rename the file if a file with the same name
 
 
 Here's a short video of it doing its job:
-https://user-images.githubusercontent.com/102385828/173242392-a3d5295a-8be7-4b24-84ec-dda286927295.mp4
+![](https://i.imgur.com/pgUXr65.gif)
