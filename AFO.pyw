@@ -1,3 +1,6 @@
+# AFO #
+# v0.2 #
+
 # Directory path
 filedir = "YOUR_PATH_HERE" # Enter your desired path in this variable
 # Additional options
