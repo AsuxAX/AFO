@@ -4,7 +4,7 @@
 # Directory path
 filedir = "YOUR_PATH_HERE" # Enter your desired path in this variable
 # Additional options
-runonce = False # Make it True if you only want to run this script once.
+runonce = False # Make it True if you only want to run this script once
 debugmode = False # Make it True if you want to debug the program, rename the file extension from .pyw to .py
 
 
