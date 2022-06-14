@@ -1,8 +1,8 @@
 # Directory path
 filedir = "YOUR_PATH_HERE" # Enter your desired path in this variable
 # Additional options
-continuechecking = True # Make it False if you only want to run this script once
-debug = False # Make it True if you want to debug the program, rename the file extension from .pyw to .py to see the outputs
+runonce = True # Make it False if you only want to run this script once.
+debugmode = False # Make it True if you want to debug the program, rename the file extension from .pyw to .py
 
 
 # DO NOT EDIT ANYTHING BELOW IF YOU DO NOT KNOW WHAT YOU ARE DOING #
@@ -41,7 +41,7 @@ def chkdircont(path):
 	return os.listdir(path)
 
 def dgprt(text):
-	if debug == True:
+	if debugmode == True:
 		print(text)
 	else:
 		pass
@@ -126,7 +126,7 @@ def organizefiles():
 			pass
 
 
-while continuechecking:
+while not runonce:
 	sleep(3)
 	if DC == chkdircont(filedir):
 		dgprt("No changes detected\n")
@@ -134,3 +134,8 @@ while continuechecking:
 		dgprt("Changes detected\n")
 		organizefiles()
 		DC = chkdircont(filedir)
+
+if runonce:
+	organizefiles()
+else:
+	pass
