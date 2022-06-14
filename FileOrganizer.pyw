@@ -1,102 +1,33 @@
+# Directory path
+filedir = "YOUR_PATH_HERE" # Enter your desired path in this variable
+# Additional options
+continuechecking = True # Make it False if you only want to run this script once
+debug = False # Make it True if you want to debug the program, rename the file extension from .pyw to .py to see the outputs
+
+
+# DO NOT EDIT ANYTHING BELOW IF YOU DO NOT KNOW WHAT YOU ARE DOING #
+
 import os
 import shutil
 from time import sleep
+import threading
 
-# Automatic File Organizer #
-# Organizes the files in the given directory at start-up and when a new file is added. #
-# Made by Asux - 12/06/2022 #
+threads = []
+def main():
+  for item in list:
+     t = threading.Thread(target=dgprt, args=(item,))
+     threads.append(t)
+     t.start()
+  for t in threads:
+     t.join()
 
-def organizefiles():
-	for file in checkdircontent(filedir):
-		try:
-			if file.lower().endswith(fileextensionsF["video"]):
-				if os.path.isdir(filedir + "\\VIDEO"):
-					shutil.move(os.path.join(filedir,file), os.path.join(filedir + "\\VIDEO", file))
-				else:
-					os.mkdir(filedir + "\\VIDEO")
-					shutil.move(os.path.join(filedir, file), os.path.join(filedir + "\\VIDEO", file))
-		except FileNotFoundError:
-			pass
-
-		try:
-			if file.lower().endswith(fileextensionsF["image"]):
-				if os.path.isdir(filedir + "\\IMAGE"):
-					shutil.move(os.path.join(filedir, file), os.path.join(filedir + "\\IMAGE", file))
-				else:
-					os.mkdir(filedir + "\\IMAGE")
-					shutil.move(os.path.join(filedir, file), os.path.join(filedir + "\\IMAGE", file))
-		except FileNotFoundError:
-			pass
-
-		try:
-			if file.lower().endswith(".gif"):
-				if os.path.isdir(filedir + "\\GIF"):
-					shutil.move(os.path.join(filedir,file), os.path.join(filedir + "\\GIF", file))
-				else:
-					os.mkdir(filedir + "\\GIF")
-					shutil.move(os.path.join(filedir, file), os.path.join(filedir + "\\GIF", file))
-		except FileNotFoundError:
-			pass
-
-		try:
-			if file.lower().endswith(".txt"):
-				if os.path.isdir(filedir + "\\TEXT"):
-					shutil.move(os.path.join(filedir,file), os.path.join(filedir + "\\TEXT", file))
-				else:
-					os.mkdir(filedir + "\\TEXT")
-					shutil.move(os.path.join(filedir, file), os.path.join(filedir + "\\TEXT", file))
-		except FileNotFoundError:
-			pass
-
-		try:
-			if file.lower().endswith(fileextensionsF["audio"]):
-				if os.path.isdir(filedir + "\\AUDIO"):
-					shutil.move(os.path.join(filedir, file), os.path.join(filedir + "\\AUDIO", file))
-				else:
-					os.mkdir(filedir + "\\AUDIO")
-					shutil.move(os.path.join(filedir, file), os.path.join(filedir + "\\AUDIO", file))
-		except FileNotFoundError:
-			pass
-
-		try:
-			if file.lower().endswith(fileextensionsF["archive"]):
-				if os.path.isdir(filedir + "\\ARCHIVE"):
-					shutil.move(os.path.join(filedir, file), os.path.join(filedir + "\\ARCHIVE", file))
-				else:
-					os.mkdir(filedir + "\\ARCHIVE")
-					shutil.move(os.path.join(filedir, file), os.path.join(filedir + "\\ARCHIVE", file))
-		except FileNotFoundError:
-			pass
-
-		try:
-			if file.lower().endswith(".exe"):
-				if os.path.isdir(filedir + "\\EXECUTABLE"):
-					shutil.move(os.path.join(filedir, file), os.path.join(filedir + "\\EXECUTABLE", file))
-				else:
-					os.mkdir(filedir + "\\EXECUTABLE")
-					shutil.move(os.path.join(filedir, file), os.path.join(filedir + "\\EXECUTABLE", file))
-		except FileNotFoundError:
-			pass
-
-		try:
-			if file.lower().endswith(fileextensionsF["doc"]):
-				if os.path.isdir(filedir + "\\DOCUMENT"):
-					shutil.move(os.path.join(filedir, file), os.path.join(filedir + "\\DOCUMENT", file))
-				else:
-					os.mkdir(filedir + "\\DOCUMENT")
-					shutil.move(os.path.join(filedir, file), os.path.join(filedir + "\\DOCUMENT", file))
-		except FileNotFoundError:
-			pass
-
-
-
-
+DC = list()
 fileextensionsF = {
 	"video":(".webm",".mpg",".mp2",".mpeg",".mpe",".mpv",".ogg",".mp4",".m4p",
 	         ".m4v",".avi",".wmv",".wmv",".mov",".qt",".flv",".swf"),
 	"image":(".png",".jpg",".jpeg",".webp",".bmp",".raw",".jpe",".jif",".jfif",
 	         ".jfi",".dib",".heif",".ind",".jpm",".jp2"),
-	"audio":(".aac", ".aa", ".dvf", ".m4a", ".m4b", ".mp3",
+	"audio":(".aac", ".aa", ".dvf", ".m4a", ".m4b", ".m4p", ".mp3",
               ".msv", "ogg", "oga", ".vox", ".wav", ".wma", ".flac"),
 	"archive":(".a", ".ar", ".cpio", ".iso", ".tar", ".gz", ".rz", ".7z",
                  ".dmg", ".rar", ".xar", ".zip"),
@@ -106,16 +37,100 @@ fileextensionsF = {
             "pptx", ".pdf")
 }
 
-def checkdircontent(dirpath):
-	return os.listdir(dirpath)
+def chkdircont(path):
+	return os.listdir(path)
 
-filedir = "YOUR_PATH_HERE"
-DC = list()
-
-while True:
-	sleep(3)
-	if DC == checkdircontent(filedir):
-		pass
+def dgprt(text):
+	if debug == True:
+		print(text)
 	else:
+		pass
+
+def organizefiles():
+	fdnames = "\\VIDEO","\\IMAGE","\\GIF","\\TEXT","\\AUDIO","\\ARCHIVE","\\EXECUTABLE","\\DOCUMENT"
+	for file in chkdircont(filedir):
+		try:
+			if file.lower().endswith(fileextensionsF["video"]):
+				if os.path.isdir(filedir + fdnames[0]):
+					shutil.move(os.path.join(filedir,file), os.path.join(filedir + fdnames[0], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[0] + "\n")
+				else:
+					os.mkdir(filedir + fdnames[0])
+					dgprt(filedir + fdnames[0] + " did not exist, created one")
+					shutil.move(os.path.join(filedir, file), os.path.join(filedir + fdnames[0], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[0] + "\n")
+			if file.lower().endswith(fileextensionsF["image"]):
+				if os.path.isdir(filedir + fdnames[1]):
+					shutil.move(os.path.join(filedir, file), os.path.join(filedir + fdnames[1], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[1] + "\n")
+				else:
+					os.mkdir(filedir + fdnames[1])
+					dgprt(filedir + fdnames[1] + " did not exist, created one")
+					shutil.move(os.path.join(filedir, file), os.path.join(filedir + fdnames[1], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[1] + "\n")
+			if file.lower().endswith(".gif"):
+				if os.path.isdir(filedir + fdnames[2]):
+					shutil.move(os.path.join(filedir,file), os.path.join(filedir + fdnames[2], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[2] + "\n")
+				else:
+					os.mkdir(filedir + fdnames[2])
+					dgprt(filedir + fdnames[2] + " did not exist, created one")
+					shutil.move(os.path.join(filedir, file), os.path.join(filedir + fdnames[2], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[2] + "\n")
+			if file.lower().endswith(".txt"):
+				if os.path.isdir(filedir + fdnames[3]):
+					shutil.move(os.path.join(filedir,file), os.path.join(filedir + fdnames[3], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[3] + "\n")
+				else:
+					os.mkdir(filedir + fdnames[3])
+					dgprt(filedir + fdnames[3] + " did not exist, created one")
+					shutil.move(os.path.join(filedir, file), os.path.join(filedir + fdnames[3], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[3] + "\n")
+			if file.lower().endswith(fileextensionsF["audio"]):
+				if os.path.isdir(filedir + fdnames[4]):
+					shutil.move(os.path.join(filedir, file), os.path.join(filedir + fdnames[4], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[4] + "\n")
+				else:
+					os.mkdir(filedir + fdnames[4])
+					dgprt(filedir + fdnames[4] + " did not exist, created one")
+					shutil.move(os.path.join(filedir, file), os.path.join(filedir + fdnames[4], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[4] + "\n")
+			if file.lower().endswith(fileextensionsF["archive"]):
+				if os.path.isdir(filedir + fdnames[5]):
+					shutil.move(os.path.join(filedir, file), os.path.join(filedir + fdnames[5], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[5] + "\n")
+				else:
+					os.mkdir(filedir + fdnames[5])
+					dgprt(filedir + fdnames[5] + " did not exist, created one")
+					shutil.move(os.path.join(filedir, file), os.path.join(filedir + fdnames[5], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[5] + "\n")
+			if file.lower().endswith(".exe"):
+				if os.path.isdir(filedir + fdnames[6]):
+					shutil.move(os.path.join(filedir, file), os.path.join(filedir + fdnames[6], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[6] + "\n")
+				else:
+					os.mkdir(filedir + fdnames[6])
+					dgprt(filedir + fdnames[6] + " did not exist, created one")
+					shutil.move(os.path.join(filedir, file), os.path.join(filedir + fdnames[6], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[6] + "\n")
+			if file.lower().endswith(fileextensionsF["doc"]):
+				if os.path.isdir(filedir + fdnames[7]):
+					shutil.move(os.path.join(filedir, file), os.path.join(filedir + fdnames[7], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[7] + "\n")
+				else:
+					os.mkdir(filedir + fdnames[7])
+					dgprt(filedir + fdnames[7] + " did not exist, created one")
+					shutil.move(os.path.join(filedir, file), os.path.join(filedir + fdnames[7], file))
+					dgprt("Moved " + file + " to " + filedir + fdnames[7] + "\n")
+		except:
+			pass
+
+
+while continuechecking:
+	sleep(3)
+	if DC == chkdircont(filedir):
+		dgprt("No changes detected\n")
+	else:
+		dgprt("Changes detected\n")
 		organizefiles()
-		DC = checkdircontent(filedir)
+		DC = chkdircont(filedir)
