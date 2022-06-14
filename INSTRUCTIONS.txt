@@ -1,5 +1,7 @@
-Open "FileOrganizer.pyw", scroll down to the bottom and enter your own path that you want to keep organized in the variable named "filedir".
+Open "AFO.pyw", scroll down to the bottom and enter your own path that you want to keep organized in the variable named "filedir".
 Replace all "/"'s or "\"'s with "\\"'s
 Then put it in the start-up folder in Windows 10.
-You can find the start-up folder by pressing Windows + R and typing "shell:startup". After you're in the startup folder, put "FileOrganizer.pyw" in it 
+You can find the start-up folder by pressing Windows + R and typing "shell:startup". After you're in the startup folder, put "AFO.pyw" in it 
 and restart, it will automatically run itself from now on when you start your PC.
+
+Version number in the .pyw file.
