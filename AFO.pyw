@@ -2,7 +2,7 @@
 # v0.3 #
 
 # Directory path
-path = "C:\\Users\\Asux\\Desktop" # Enter your desired path in this variable
+path = "YOUR_PATH_HERE" # Enter your desired path in this variable
 # Additional options
 runonce = False # Make it True if you only want to run this script once
 
