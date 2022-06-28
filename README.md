@@ -9,3 +9,5 @@ Instructions on setting it up: INSTRUCTIONS.txt
 
 ###### Here's a short video of it doing its job:
 ![](https://i.imgur.com/pgUXr65.gif)
+
+###### Check out my other works: https://github.com/AsuxAX
